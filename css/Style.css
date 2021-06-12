@@ -1,0 +1,217 @@
+/*body y fondos*/
+body{
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.baseNormal{
+	background-image: url(../Recursos/Fondo.jpg);
+}
+
+.baseDesenfocada{
+	background-image: url(../Recursos/FondoDesenfocado.jpg)
+}
+/*fin de body y fondos*/
+
+/*barra navegación*/
+.texto{
+	color: rgb(108, 117, 125);
+}
+
+.links:hover{
+	background: rgb(165, 42, 42);
+	border-radius: 0.2rem;
+}
+
+/*fin de barra navegación*/
+
+
+/*color fondo formularios*/
+.formularios{
+	margin-top: 100px;
+	background: rgba(165, 42, 42, 0.452);
+	box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.575);
+	border:1px solid rgb(0, 0, 0);
+	border-radius: 0.5%;
+	color: black;
+}
+
+
+.titulo{
+	text-shadow: 3px 2px 2px rgba(0, 0, 0, 0.575);
+}
+
+.texto-card{
+	color: black;
+}
+/*color fondo formularios*/
+
+
+/*botones*/
+.boton_color{
+	color: black;
+	box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.575);
+}
+
+.boton_color:hover{
+	background: rgb(165, 42, 42);
+	border:1px solid rgb(0, 0, 0);
+}
+/*fin de botones*/
+
+
+/*longitud de combo*/
+.longitud {
+    max-width:477px;
+}
+
+.longitud > option{
+	max-width:477px;
+}
+
+/*fin de longitud de combo*/
+
+/* Validaciones formularios */
+.falloValid {
+    background-color: #a60000;
+}
+
+/* Fin de Validaciones Formularios */
+
+/* Ventana emergente de alertas y mensajes */
+.avisos {
+    position: fixed;
+    padding-top: 20px !important;
+    /*top: 20;
+    /*bottom: 0;*/
+    left: 0;
+    right: 0; 
+    transition: opacity 500ms;
+
+    z-index: 5 !important;
+}
+        
+.avisos:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.btnCerrarAlert {
+    margin-left: 15px;
+    color: black;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+        
+.btnCerrarAlert:hover {
+    color: rgb(108, 117, 125);
+}
+        
+.alert {
+    font-weight: bolder;
+    margin: 70px auto;
+    padding: 20px;
+	background-color: rgba(35, 154, 94, 0.952);
+	color: #000000;
+	/* box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.575); */
+    width: 30%;
+
+    transition: all 5s ease-in-out;
+	box-shadow: 8px 8px 8px rgba(165, 42, 42, 0.575);
+	border:1px solid rgb(0, 0, 0);
+	border-radius: 0.5%;
+    display: none;
+    
+}
+        
+.alert h2 {
+    margin-top: 0;
+    color: #333;
+}
+        
+.alert .contenido {
+    max-height: 30%;
+    overflow: auto;
+}
+
+.container{
+    z-index: 1;
+    
+}
+
+.superior{
+    z-index: 5 !important;
+    
+}
+
+/* Fin de Ventana emergente de alertas y mensajes */
+
+/* Tabla */
+.tabla{
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.575);
+}
+
+.tabla tr{
+    background: rgba(165, 42, 42);
+}
+
+.dividida{
+    border-bottom: 1px solid #000;
+}
+
+#jugadorEncontrado,
+#personajeEncontrado,
+#armaEncontrada,
+#escenarioEncontrado,
+#partidaEncontrada,
+#tablaPersonajesLogueado,
+#tablaPartidasLogueado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Fin de tabla */
+
+/* Botones en tablas */
+.bnEdit{
+    border:1px solid rgb(0, 0, 0);
+	border-radius: 0.5%;
+    background-color: rgba(255, 161, 20);
+}
+
+.bnEdit:hover{
+    background-color: rgba(109, 198, 0);
+}
+
+.bnErase{
+    border:1px solid rgb(0, 0, 0);
+	border-radius: 0.5%;
+    background-color: rgba(198, 0, 0);
+}
+
+.bnErase:hover{
+    background-color: rgba(33, 0, 198);
+}
+/* Fin Botones en tablas */
+
+/*------------------------------------------------------------------------------------------------------------*/
+
+
+
+.box{
+	margin-top:100;
+}
+
+
+
+
+
+
+
+

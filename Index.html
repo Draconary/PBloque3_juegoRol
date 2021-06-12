@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Amigos del Rol</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css" />
+    <link rel="stylesheet" href="css/Style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="recursos/WerewolfClaws.png">
+</head>
+
+<body class="baseNormal" id="fondo">
+
+    <!--barra navegador-->
+
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top mt-1 ml-1 mr-1">
+            <a class="navbar-brand"><img src="recursos/W20Pequeño.png" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <span class="navbar-text text-white">
+                Grupo Amigos del Rol
+              </span>
+            <div class="collapse navbar-collapse" id="menu">
+                <nav class="navbar-nav">
+                    <ul class="navbar-nav">
+
+                        <!-- Menú de Inicio -->
+                        <li class="nav-item">
+                            <a id="btnInicio" href="#" class="nav-link links">Inicio</a>
+                        </li>
+
+                        <!-- Inicio de Sesión -->
+                        <li class="nav-item">
+                            <a id="botonInicioSesion" href="#" class="nav-link links">Iniciar Sesión</a>
+                        </li>
+
+                        <!-- Crear Perfil -->
+                        <li class="nav-item">
+                            <a id="botonCrearPerfil" href="#" class="nav-link links">Perfil</a>
+                        </li>
+
+                        <!-- Personaje -->
+                        <li class="nav-item">
+                            <a id="botonPersonaje" href="#" class="nav-link links">Personaje</a>
+                        </li>
+
+                        <!-- Partidas -->
+                        <li class="nav-item">
+                            <a id="botonPartidas" href="#" class="nav-link links">Partidas</a>
+                        </li>
+
+                        <!-- Buscar -->
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle links" data-toggle="dropdown">Buscar</a>
+                            <ul class="dropdown-menu bg-dark">
+                                <li><a id="btnFormBuscarJugador" class="dropdown-item texto links" href="#">Jugadores</a></li>
+                                <li><a id="btnFormBuscarPersonaje" class="dropdown-item texto links" href="#">Personajes</a></li>
+                                <li><a id="btnFormBuscarPartida" class="dropdown-item texto links" href="#">Partidas</a></li>
+                                <li><a id="btnFormBuscarArma" class="dropdown-item texto links" href="#">Armas</a></li>
+                                <li><a id="btnFormBuscarEscenario" class="dropdown-item texto links" href="#">Escenarios</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Cerrar Sesión -->
+                        <li class="nav-item">
+                            <a id="botonCerrarSesion" href="#" class="nav-link links">Cerrar Sesión</a>
+                        </li>
+
+                        <li id="presentacion" class="nav-link">
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+    </div>
+
+
+
+    <!-- ALERT MODAL -->
+    <div class="mt-5 fondoAviso">
+        <div id="popup1" class="alert avisos mt-5">
+            <span class="btnCerrarAlert" id="btnCerrarAlert" onclick="this.parentElement.style.display='none';">&times;</span>
+            <!-- <h2>PRUEBA MENSAJE ALERTA</h2> -->
+            <pre class="contenido" id="contenido">
+                      <!-- AQUÍ IRÍAN TODOS LOS MENSAJES Y AVISOS DE ALERTA -->
+            </pre>
+        </div>
+    </div>
+
+    <!-- FIN DE ALERT MODAL -->
+
+
+    <!--formulario inicio de sesión-->
+    <form name="frmIniSesion" id="frmIniSesion">
+        <div class="container mb-3 formularios col-md-6 offset-md-3s">
+
+            <div class="container mt-5">
+                <h4>Inicio de Sesión</h4>
+            </div>
+
+            <div class="form-group row mt-5">
+                <label class="col-4 col-form-label font-weight-bold" for="jugador">Nick</label>
+                <input id="nickInicio" name="nickInicio" placeholder="Nick" type="text" class="form-control col-7 mr-1" required="required">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="contraseña">Contraseña</label>
+                <input id="passInicio" name="passInicio" placeholder="Contraseña" type="password" class="form-control col-7 mr-1" required="required">
+            </div>
+
+            <div class="form-group row">
+                <div class="offset-10 col-4">
+                    <input name="submit" class="btn btn-secondary boton_color" value="Entrar" type="button" id="btnInicioSesion" />
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+
+    <!-- formulario crear perfil -->
+
+    <form name="frmCrearPerfil" id="frmCrearPerfil">
+        <div class="container mb-3 formularios col-md-6 offset-md-3s">
+
+            <div class="container mt-5">
+                <h4 id="cabeceraPerfil"></h4>
+            </div>
+
+            <div class="form-group row mt-5">
+                <label class="col-4 col-form-label font-weight-bold" for="nombreJugador">Nombre</label>
+                <input id="nombreCrear" name="nombreCrear" placeholder="Introduce tu nombre" type="text" class="form-control col-7 mr-1" required="required">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="nickJugador">Nick</label>
+                <input id="nickCrear" name="nickCrear" placeholder="Introduce tu apodo" type="text" class="form-control col-7 mr-1" required="required">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="mailJugador">Correo electrónico</label>
+                <input id="mailCrear" name="mailCrear" placeholder="Correo electrónico" type="email" class="form-control col-7 mr-1" required="required">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="contraseñaJugador">Contraseña</label>
+                <input id="passCrear" name="passCrear" placeholder="Contraseña" type="password" class="form-control col-7 mr-1" required="required">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="confirmaJugador">Confirma tu contraseña</label>
+                <input id="passConfirmar" name="passConfirmar" placeholder="Confirma tu contraseña" type="password" class="form-control col-7 mr-1" required="required">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="estadoJugador">Estado</label>
+                <select id="lstEstadoJugador" name="lstEstadoJugador" class="form-control col-7 mr-1" required="required">
+                      <option value="0" selected>Escoja un estado</option>
+                      <option value="Activo">Activo - Se le tendrá en cuenta para partidas</option>
+                      <option value="Inactivo">Inactivo - No se le tendrá en cuenta para partidas</option>
+                    </select>
+            </div>
+
+            <div class="form-group row">
+                <div class="offset-9 col-4">
+                    <input name="edit" class="btn btn-secondary boton_color" value="Editar" type="button" id="btnEditarPerfil" />
+                    <input name="submit" class="btn btn-secondary boton_color" value="Crear" type="button" id="btnCrearPerfil" />
+                    <input name="limpiar" class="btn btn-secondary boton_color" value="Cancelar" type="reset" />
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <!-- Formulario personaje -->
+
+    <form name="frmPersonaje" id="frmPersonaje">
+        <div class="container mb-3 formularios col-md-6 offset-md-3s">
+
+            <div class="container mt-5">
+                <h4>Crear Personaje</h4>
+            </div>
+
+            <div class="form-group row mt-5">
+                <label class="col-4 col-form-label font-weight-bold" for="nomPersonaje">Nombre</label>
+                <input id="nombrePersonaje" name="nombrePersonaje" placeholder="Nombre de tu personaje" type="text" class="form-control col-7 mr-1" required="required">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="tipPersonaje">Tipo</label>
+                <select id="lstTipoPersonaje" name="lstTipoPersonaje" class="form-control col-7 mr-1" required="required">
+                    </select>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="armPersonaje">Arma</label>
+                <select id="lstArmasPersonaje" name="lstArmasPersonaje" class="form-control col-7 mr-1" required="required">
+                    </select>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="descPersonaje">Descripción</label>
+                <textarea id="descripcionPersonaje" name="descripcionPersonaje" maxlength="120" placeholder="Descripción de tu personaje" class="form-control col-7 mr-1" required="required" rows="3"></textarea>
+            </div>
+
+            <div class="form-group row">
+                <div class="offset-8 col-4">
+                    <input name="submit" class="btn btn-secondary boton_color" value="Crear" type="button" id="btnCrearPersonaje" />
+                    <input name="edit" class="btn btn-secondary boton_color" value="Cargar" type="button" id="btnCargarPersonajes" />
+                    <input name="limpiar" class="btn btn-secondary boton_color" value="Cancelar" type="reset" />
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+
+    <!-- Formulario Tabla Personajes -->
+
+    <form name="frmTablaPersonaje" id="frmTablaPersonaje">
+        <div class="container mb-3 formularios col-md-6 offset-md-3s">
+
+            <div class="container mt-5">
+                <h4 id="personajesLogueado"></h4>
+            </div>
+
+            <div id="tablaPersonajesLogueado" class="offset-1 col-10 font-weight-bold invisible"></div>
+            <br>
+            <div class="form-group row">
+                <div class="offset-10 col-4">
+                    <input name="cerrar" class="btn btn-secondary boton_color" value="Cerrar" type="button" id="btnCerrarTabPers"/>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <!-- Formulario Editar Personaje -->
+
+    <form name="frmEditPersonaje" id="frmEditPersonaje">
+        <div class="container mb-3 formularios col-md-6 offset-md-3s">
+
+            <div class="container mt-5">
+                <h4>Editar Personaje</h4>
+            </div>
+
+            <div class="form-group row mt-5">
+                <label class="col-4 col-form-label font-weight-bold" for="nomPersonaje">Nombre</label>
+                <input id="nombrePersEdit" name="nombrePersEdit" placeholder="Nombre de tu personaje" type="text" class="form-control col-7 mr-1" required="required">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="tipPersonaje">Tipo</label>
+                <select id="lstTipoPersEdit" name="lstTipoPersEdit" class="form-control col-7 mr-1" required="required">
+                </select>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="armPersonaje">Arma</label>
+                <select id="lstArmasPersEdit" name="lstArmasPersEdit" class="form-control col-7 mr-1" required="required">
+                </select>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="nivPersonaje">Nivel</label>
+                <input id="nivPersEdit" name="nivPersEdit" placeholder="Nivel del personaje" type="number" min="1" class="form-control col-7 mr-1" required="required">                
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="descPersonaje">Descripción</label>
+                <textarea id="descrPersEdit" name="descrPersEdit" maxlength="120" placeholder="Descripción de tu personaje" class="form-control col-7 mr-1" required="required" rows="3"></textarea>
+            </div>
+
+            <div class="form-group row">
+                <div class="offset-9 col-4">
+                    <input name="submit" class="btn btn-secondary boton_color" value="Editar" type="button" id="btnEditPers" />
+                    <input name="limpiar" class="btn btn-secondary boton_color" value="Cancelar" type="reset" />
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+
+    <!-- Formulario partidas -->
+
+    <form name="frmPartidas" id="frmPartidas">
+        <div class="container mb-3 formularios col-md-6 offset-md-3s">
+
+            <div class="container mt-5">
+                <h4 id="cabeceraPartida"></h4>
+            </div>
+
+            <div class="form-group row mt-5">
+                <label class="col-4 col-form-label font-weight-bold" for="fecPartida">Fecha</label>
+                <input id="fechaPartida" name="fechaPartida" type="date" class="form-control col-7 mr-1" required="required">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="escPartida">Escenario</label>
+                <select id="lstEscePartida" name="lstEscePartida" class="form-control col-7 mr-1" required="required">
+                    </select>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="jugPartida">Jugadores</label>
+                <select id="lstJugPartida" name="lstJugPartida" class="form-control col-7 mr-1" required="required" multiple>
+                    </select>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="nivPersonaje">Nivel recomendado</label>
+                <input id="nivelPersonaje" name="nivelPersonaje" placeholder="Nivel de la partida" type="number" min="1" class="form-control col-7 mr-1" required="required">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="estadoPartida">Estado</label>
+                <select id="lstEstadoPartida" name="lstEstadoPartida" class="form-control col-7 mr-1" required="required">
+                      <option value="0" selected>Escoja un estado</option>
+                      <option value="Iniciada">Iniciada</option>
+                      <option value="Terminada">Terminada</option>
+                      <option value="Inactiva">Inactiva</option>
+                    </select>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="descPartida">Descripción de la partida</label>
+                <textarea id="descripcionPartida" maxlength="120" name="descripcionPartida" placeholder="Descripción de la partida" class="form-control col-7 mr-1" required="required" rows="3"></textarea>
+            </div>
+
+            <div class="form-group row">
+                <div class="offset-8 col-4">
+                    <input name="submit" class="btn btn-secondary boton_color" value="Crear" type="button" id="btnCrearPartida" />
+                    <input name="edit" class="btn btn-secondary boton_color" value="Editar" type="button" id="btnEditarPartida" />
+                    <input name="charge" class="btn btn-secondary boton_color" value="Cargar" type="button" id="btnCargarPartidas" />
+                    <input name="limpiar" class="btn btn-secondary boton_color" value="Cancelar" type="reset" />
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <!-- Formulario Tabla Partidas -->
+
+    <form name="frmTablaPartida" id="frmTablaPartida">
+        <div class="container mb-3 formularios col-md-6 offset-md-3s">
+
+            <div class="container mt-5">
+                <h4 id="partidasLogueado"></h4>
+            </div>
+
+            <div id="tablaPartidasLogueado" class="offset-1 col-10 font-weight-bold invisible"></div>
+            <br>
+            <div class="form-group row">
+                <div class="offset-10 col-4">
+                    <input name="cerrar" class="btn btn-secondary boton_color" value="Cerrar" type="button" id="btnCerrarTabPart"/>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+
+    <!-- SECCIÓN BUSCAR -->
+
+    <!-- formulario buscar jugador -->
+    <form name="frmBuscarJugador" id="frmBuscarJugador">
+        <div class="container mb-3 formularios col-md-6 offset-md-3s">
+
+            <div class="container mt-5">
+                <h4>Buscar Jugador</h4>
+            </div>
+
+            <div class="form-group row mt-5">
+                <label class="col-4 col-form-label font-weight-bold" for="jugadorNombreBuscar">Nombre del Jugador: </label>
+                <input id="nomBuscarJugador" name="nomBuscarJugador" placeholder="Nombre a Buscar" type="text" class="form-control col-7 mr-1">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="jugadorNickBuscar">Nick del Jugador: </label>
+                <input id="nickBuscarJugador" name="nickBuscarJugador" placeholder="Apodo a Buscar" type="text" class="form-control col-7 mr-1">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold">Estado: </label>
+                <div class="col-8">
+
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="radioBuscarEstJugador" id="radioBuscarEstJugador" value="activo">
+                        <label class="form-check-label font-weight-bold" for="inlineRadio1">Activo</label>
+                    </div>
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="radioBuscarEstJugador" id="radioBuscarEstJugador" value="inactivo">
+                        <label class="form-check-label font-weight-bold" for="inlineRadio2">Inactivo</label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold">Otras características: </label>
+                <div class="col-8">
+
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="radioBuscJugPart" id="radioBuscJugPart" value="conPartida">
+                        <label class="form-check-label font-weight-bold" for="inlineRadio1">Con Partida</label>
+                    </div>
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="radioBuscJugPart" id="radioBuscJugPart" value="sinPartida">
+                        <label class="form-check-label font-weight-bold" for="inlineRadio2">Sin Partida</label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold">Ordenar por: </label>
+                <div class="col-8">
+
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="radioOrdenarJugador" id="radioOrdenarJugador" value="jugador_nombre">
+                        <label class="form-check-label font-weight-bold" for="inlineRadio1">Por Nombre</label>
+                    </div>
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="radioOrdenarJugador" id="radioOrdenarJugador" value="jugador_nick">
+                        <label class="form-check-label font-weight-bold" for="inlineRadio2">Por Nick</label>
+                    </div>
+
+                </div>
+            </div>
+
+            <br>
+            <div id="jugadorEncontrado" class="offset-1 col-10 font-weight-bold invisible"></div><br><br>
+
+            <div class="form-group row">
+                <div class="offset-9 col-4 mb-3">
+                    <input name="submit" class="btn btn-secondary boton_color" value="Buscar" type="button" id="btnBuscarJugador" />
+                    <input name="limpiar" class="btn btn-secondary boton_color" value="Limpiar" type="reset" />
+                </div>
+            </div>
+            <br>
+
+        </div>
+    </form>
+
+    <!-- formulario buscar personajes -->
+
+    <form name="frmBuscarPersonaje" id="frmBuscarPersonaje">
+        <div class="container mb-3 formularios col-md-6 offset-md-3s">
+
+            <div class="container mt-5">
+                <h4>Buscar Personaje</h4>
+            </div>
+
+            <div class="form-group row mt-5">
+                <label class="col-4 col-form-label font-weight-bold" for="personajeNombreBuscar">Nombre del Personaje: </label>
+                <input id="nomBuscarPersonaje" name="nomBuscarPersonaje" placeholder="Nombre a Buscar" type="text" class="form-control col-6 mr-1">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="personajeTipoBuscar">Tipo de Personaje: </label>
+                <select id="lstTipoPersonajeBusc" name="lstTipoPersonajeBusc" class="form-control col-7 mr-1 longitud" multiple>
+                    </select>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="personajeNivelBuscar">Nivel del Personaje: </label>
+                <input id="nivelBuscarPersonajeMin" name="nivelBuscarPersonajeMin" placeholder="Nivel mínimo del Personaje" type="number" min="1" class="form-control col-3 mr-1">
+                <input id="nivelBuscarPersonajeMax" name="nivelBuscarPersonajeMax" placeholder="Nivel máximo del Personaje" type="number" min="1" class="form-control col-3">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold">Ordenar por: </label>
+                <div class="col-8">
+
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="radioOrdenarPersonaje" id="radioOrdPersonaje" value="personaje_nombre">
+                        <label class="form-check-label font-weight-bold" for="inlineRadio1">Por Nombre</label>
+                    </div>
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="radioOrdenarPersonaje" id="radioOrdPersonaje" value="tipo_personaje">
+                        <label class="form-check-label font-weight-bold" for="inlineRadio2">Por Tipo</label>
+                    </div>
+
+                </div>
+            </div>
+
+            <br>
+            <div id="personajeEncontrado" class="offset-1 col-10 font-weight-bold invisible"></div><br><br>
+
+            <div class="form-group row">
+                <div class="offset-8 col-4 mb-3">
+                    <input name="submit" class="btn btn-secondary boton_color" value="Buscar" type="button" id="btnBuscarPersonaje" />
+                    <input name="limpiar" class="btn btn-secondary boton_color" value="Limpiar" type="reset" />
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <!-- formulario buscar partidas -->
+
+    <form name="frmBuscarPartida" id="frmBuscarPartida">
+        <div class="container mb-3 formularios col-md-6 offset-md-3s">
+
+            <div class="container mt-5">
+                <h4>Buscar Partida</h4>
+            </div>
+
+            <div class="form-group row mt-5">
+                <label class="col-4 col-form-label font-weight-bold" for="partidaNivelBuscar">Nivel de la Partida: </label>
+                <input id="nivelBuscarPartidaMin" name="nivelBuscarPartidaMin" placeholder="Nivel Mínimo a Buscar" type="number" min="1" class="form-control col-3 mr-1">
+                <input id="nivelBuscarPartidaMax" name="nivelBuscarPartidaMax" placeholder="Nivel Máximo a Buscar" type="number" min="1" class="form-control col-3">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="partidaFechaBuscar">Rango de Fecha de la Partida: </label>
+                <input id="fechaBuscarPartidaMin" name="fechaBuscarPartidaMin" type="date" class="form-control col-3 mr-1">
+                <input id="fechaBuscarPartidaMax" name="fechaBuscarPartidaMax" type="date" class="form-control col-3">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="partidaMasterBuscar">Master de la Partida: </label>
+                <input id="masterBuscarPartida" name="masterBuscarPartida" placeholder="Master a Buscar" type="text" class="form-control col-6 mr-1">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="escPartidaBuscar">Escenario:</label>
+                <select id="lstEscePartidaBuscar" name="lstEscePartidaBuscar" class="form-control col-6 mr-1">
+                    </select>
+            </div>
+
+
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold">Ordenar por: </label>
+                <div class="col-8">
+
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="radioOrdenarPartida" id="radioOrdPartida" value="partida_nivel">
+                        <label class="form-check-label font-weight-bold" for="inlineRadio1">Por Nivel</label>
+                    </div>
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="radioOrdenarPartida" id="radioOrdPartida" value="partida_fecha">
+                        <label class="form-check-label font-weight-bold" for="inlineRadio2">Por Fecha</label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="partidaEncontrada" class="offset-1 col-10 font-weight-bold invisible"></div><br><br>
+
+            <div class="form-group row">
+                <div class="offset-8 col-4 mb-3">
+                    <input name="submit" class="btn btn-secondary boton_color" value="Buscar" type="button" id="btnBuscarPartida" />
+                    <input name="limpiar" class="btn btn-secondary boton_color" value="Limpiar" type="reset" />
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <!-- formulario buscar armas -->
+
+    <form name="frmBuscarArma" id="frmBuscarArma">
+        <div class="container mb-3 formularios col-md-6 offset-md-3s">
+
+            <div class="container mt-5">
+                <h4>Buscar Arma</h4>
+            </div>
+
+            <div class="form-group row mt-5">
+                <label class="col-4 col-form-label font-weight-bold" for="armaNombreBuscar">Nombre del Arma: </label>
+                <input id="nomBuscarArma" name="nomBuscarArma" placeholder="Nombre a Buscar" type="text" class="form-control col-6 mr-1">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="armaTipoBuscar">Tipo de Arma: </label>
+                <select id="lstTipoArmaBuscar" name="lstTipoArmaBuscar" class="form-control col-6 mr-1" multiple>
+                      </select>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="armaAtaqueBuscar">Ataque del Arma: </label>
+                <input id="ataqueBuscarArmaMin" name="ataqueBuscarArmaMin" placeholder="Ataque mínimo del Arma" type="number" min="0" class="form-control col-3 mr-1">
+                <input id="ataqueBuscarArmaMax" name="ataqueBuscarArmaMax" placeholder="Ataque máximo del Arma" type="number" min="0" class="form-control col-3">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="armaDefensaBuscar">Defensa del Arma: </label>
+                <input id="defensaBuscarArmaMin" name="defensaBuscarArmaMin" placeholder="Defensa mínima del Arma" type="number" min="0" class="form-control col-3 mr-1">
+                <input id="defensaBuscarArmaMax" name="defensaBuscarArmaMax" placeholder="Defensa máxima del Arma" type="number" min="0" class="form-control col-3">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold">Uso: </label>
+                <div class="col-8">
+
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="radioUsoArma" id="radioUsoArma" value="uso">
+                        <label class="form-check-label font-weight-bold" for="inlineRadio1">En uso</label>
+                    </div>
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="radioUsoArma" id="radioUsoArma" value="noUso">
+                        <label class="form-check-label font-weight-bold" for="inlineRadio2">No se usa</label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold">Ordenar por: </label>
+                <div class="col-8">
+
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="radioOrdenarArma" id="radioOrdenarArma" value="arma_ataque">
+                        <label class="form-check-label font-weight-bold" for="inlineRadio1">Ataque</label>
+                    </div>
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="radioOrdenarArma" id="radioOrdenarArma" value="arma_defensa">
+                        <label class="form-check-label font-weight-bold" for="inlineRadio2">Defensa</label>
+                    </div>
+
+                </div>
+            </div>
+
+            <br>
+            <div id="armaEncontrada" class="offset-1 col-10 font-weight-bold invisible"></div><br><br>
+
+            <div class="form-group row">
+                <div class="offset-8 col-4 mb-3">
+                    <input name="submit" class="btn btn-secondary boton_color" value="Buscar" type="button" id="btnBuscarArma" />
+                    <input name="limpiar" class="btn btn-secondary boton_color" value="Limpiar" type="reset" />
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <!-- formulario buscar escenarios -->
+
+    <form name="frmBuscarEscenario" id="frmBuscarEscenario">
+        <div class="container mb-3 formularios col-md-6 offset-md-3s">
+
+            <div class="container mt-5">
+                <h4>Buscar Escenario</h4>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="escTipoBuscar">Tipo de Escenario: </label>
+                <!-- <input id="tipoBuscarEsc" name="tipoBuscarEsc" placeholder="Tipo a Buscar" type="text" class="form-control col-6 mr-1"> -->
+                <select id="lstTipoBuscarEsc" name="lstTipoBuscarEsc" class="form-control col-6 mr-1" multiple>
+                    </select>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold" for="escNivelBuscar">Nivel del Escenario: </label>
+                <input id="nivelBuscarEscMin" name="nivelBuscarEscMin" placeholder="Nivel mínimo del Escenario" type="number" min="1" class="form-control col-3 mr-1">
+                <input id="nivelBuscarEscMax" name="nivelBuscarEscMax" placeholder="Nivel máximo del Escenario" type="number" min="1" class="form-control col-3">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold">Uso: </label>
+                <div class="col-8">
+
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="radioUsoEsc" id="radioUsoEsc" value="uso">
+                        <label class="form-check-label font-weight-bold" for="inlineRadio1">En uso</label>
+                    </div>
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="radioUsoEsc" id="radioUsoEsc" value="noUso">
+                        <label class="form-check-label font-weight-bold" for="inlineRadio2">No se usa</label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label font-weight-bold">Ordenar por: </label>
+                <div class="col-8">
+
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="radioOrdenarEsc" id="radioOrdenarEsc" value="escenario_nivel">
+                        <label class="form-check-label font-weight-bold" for="inlineRadio1">Nivel</label>
+                    </div>
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="radioOrdenarEsc" id="radioOrdenarEsc" value="escenario_tipo">
+                        <label class="form-check-label font-weight-bold" for="inlineRadio2">Tipo</label>
+                    </div>
+
+                </div>
+            </div>
+
+            <br>
+            <div id="escenarioEncontrado" class="offset-1 col-10 font-weight-bold invisible"></div><br><br>
+
+            <div class="form-group row">
+                <div class="offset-8 col-4 mb-3">
+                    <input name="submit" class="btn btn-secondary boton_color" value="Buscar" type="button" id="btnBuscarEsc" />
+                    <input name="limpiar" class="btn btn-secondary boton_color" value="Limpiar" type="reset" />
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="jquery/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
+
+</html>
